@@ -4,9 +4,12 @@ class Moodboard extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('moodboard_model');
-		$data['result'] = $this->moodboard_model->getBoard();
-		$data['title'] = "CI_TEST!";
-		$this->load->view('moodboard');
+		
+		// Load in URL Helper to dynamically load in CSS/JS
+		$this->load->helper('url');
+		$data['base_url'] = base_url();
+		
+		// Render the home moodboard view 
+		$this->load->view('moodboard_home', $data);
 	}
 }
